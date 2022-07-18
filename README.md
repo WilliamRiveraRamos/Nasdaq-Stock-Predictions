@@ -1,9 +1,11 @@
 # Nasdaq-Stock-Predictions
-Stock predictions program using Machine Learning, Pandas, Random Forest Regressor and Mean Absolute Error
+Stock predictions program using Machine Learning, Pandas, Random Forest Regressor and Mean Absolute Error.
 
 Aviso: Este programa no es una herramienta o consejo de inversion a menos que confies 100% en el programa 😊 any way en el mundo de las inversiones nada es seguro.
 
 El dataset que utilice es de las acciones de TESLA en los ultimos 6 meses del website del Nasdaq (https://www.nasdaq.com/market-activity/stocks/tsla/historical).
+
+El programa lo cree especificamente para los dataset del NASDAQ.
 
 Lo que hace el programa:
 
