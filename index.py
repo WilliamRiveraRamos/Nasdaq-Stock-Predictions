@@ -14,7 +14,7 @@ from scipy import stats
 sns.set_theme(color_codes=True)
 
 # Load dataframe
-df = pd.read_csv('Data/Microsoft_HistoricalData.csv', index_col='Date', parse_dates=True)
+df = pd.read_csv('Data/Tesla_HistoricalData.csv', index_col='Date', parse_dates=True)
 
 # Define plot size
 plt.figure(figsize=(12,6))
@@ -22,7 +22,7 @@ plt.figure(figsize=(12,6))
 # Set seed for reproductivity
 np.random.seed(0)
 
-print('Original Data Frame:\n', df.head())
+print('\nOriginal Data Frame:\n', df.head())
 
 # Rename column 'Close/Last' to 'Close'
 df.rename(columns={'Close/Last': 'Close'}, inplace=True)
@@ -33,14 +33,17 @@ price_open = df['Open'].str.replace('$', '', regex=False)
 price_high = df['High'].str.replace('$', '', regex=False)
 price_low = df['Low'].str.replace('$', '', regex=False)
 
+# Print Dataframe original data types
+print('\nOriginal Data Types:\n', df.dtypes)
+
 # Convert from object to float data types
 df['Close'] = price_close.astype(float)
 df['Open'] = price_open.astype(float)
 df['High'] = price_high.astype(float)
 df['Low'] = price_low.astype(float)
 
-# Print Dataframe data types
-print(df.dtypes)
+# Print the new data types
+print('\nNew Data Types:\n', df.dtypes)
 
 # Get gain or lost by substracting Close less Open
 gain_lost = df['Close'] - df['Open']
@@ -48,8 +51,8 @@ gain_lost = df['Close'] - df['Open']
 # Create new column 'Gain_Lost'
 df['Gain_Lost'] = gain_lost
 
-print('Modified Data Frame:\n', df.head())
-print('\n', df.describe())
+print('\nModified Data Frame:\n', df.head())
+print('\nData Frame Statistics:\n', df.describe())
 
 # Plot correlation heat map
 sns.heatmap(df.corr(method='pearson'), cmap='Blues', annot=True)
@@ -119,7 +122,7 @@ elif up_down_side < 5:
 
 # Create a CSV file with the predictions
 output = pd.DataFrame({'Close': predictions})
-output.to_csv('Data/Microsoft_stock_predictions.csv', index=False)
+output.to_csv('Data/Tesla_stock_predictions.csv', index=False)
 
 print('\nFile created successfully!\n')
 
